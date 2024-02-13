@@ -293,3 +293,5 @@
 0.0.0.0 web.vortex.data.msn.com
 0.0.0.0 webxtsvc.microsoft.com
 0.0.0.0 wes.df.telemetry.microsoft.com
+0.0.0.0 cs.dds.microsoft.com
+0.0.0.0 anonymous.ads.brave.com
