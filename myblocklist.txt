@@ -295,3 +295,12 @@
 0.0.0.0 wes.df.telemetry.microsoft.com
 0.0.0.0 cs.dds.microsoft.com
 0.0.0.0 anonymous.ads.brave.com
+0.0.0.0 personalization.services.msn.com
+0.0.0.0 checkappexec.microsoft.com
+0.0.0.0 array609.prod.do.dsp.mp.microsoft.com
+0.0.0.0 logs1406.xiti.com
+0.0.0.0 array608.prod.do.dsp.mp.microsoft.com
+0.0.0.0 fr-app-chat-global-xiaomi-net-6-2041664722.eu-central-1.elb.amazonaws.com
+0.0.0.0 mqtt-mini.facebook.com
+0.0.0.0 pro.webstat.pl
+0.0.0.0 ponghive.org
