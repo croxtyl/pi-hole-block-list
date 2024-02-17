@@ -7,6 +7,7 @@
 * https://urlek.pl/pihole-blocklist-gen - Many useful hosts lists among others: Dangerous domains, viruses, phishing, ads, trackers, illegal sites, scam, blocking selected social media and much more by **sefinek**
 * https://urlek.pl/pihole-polish-blocklist - Polish collection of host lists, simply similar to the above
 * https://raw.githubusercontent.com/oli11gh/pi-hole-block-list/main/myblocklist.txt - My own small collection of hosts, blocking what does not fully block the above collections
+* https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts - default pi-hole block list
 
 # Informations
 * If you like this collection of blocklist pages for pi-hole, you can add star to the repository
