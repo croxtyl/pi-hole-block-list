@@ -427,3 +427,9 @@
 0.0.0.0 static.doubleclick.net
 0.0.0.0 m.doubleclick.net
 0.0.0.0 mediavisor.doubleclick.net
+0.0.0.0 dmd.metaservices.microsoft.com
+0.0.0.0 ris.api.iris.microsoft.com
+0.0.0.0 cp801.prod.do.dsp.mp.microsoft.com
+0.0.0.0 amd-keyid-8a0578cf56146fea399af903fb5b0ac36eb2786a.microsoftaik.azure.net
+0.0.0.0 connect.intl.rom.miui.com
+0.0.0.0 ma.wp.pl
