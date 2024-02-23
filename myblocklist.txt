@@ -362,11 +362,8 @@
 0.0.0.0 109.0.168.192.in-addr.arpa
 0.0.0.0 fd.api.iris.microsoft.com
 0.0.0.0 widget.intercom.io
-0.0.0.0 wpext.pl
 0.0.0.0 fp2e7a.wpc.phicdn.net
-0.0.0.0 v.wpimg.pl
 0.0.0.0 s0.2mdn.net
-0.0.0.0 wpnext.pl
 0.0.0.0 static.criteo.net
 0.0.0.0 pagead2.googlesyndication.com
 0.0.0.0 pixel6.wp.pl
@@ -432,4 +429,6 @@
 0.0.0.0 cp801.prod.do.dsp.mp.microsoft.com
 0.0.0.0 amd-keyid-8a0578cf56146fea399af903fb5b0ac36eb2786a.microsoftaik.azure.net
 0.0.0.0 connect.intl.rom.miui.com
-0.0.0.0 ma.wp.pl
+0.0.0.0 static.ads.brave.com
+0.0.0.0 100.0.168.192.in-addr.arpa
+0.0.0.0 array616.prod.do.dsp.mp.microsoft.com
