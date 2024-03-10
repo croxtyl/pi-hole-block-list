@@ -12,3 +12,4 @@
 0.0.0.0 www.nicehash.com
 0.0.0.0 komputerswiat.pl
 0.0.0.0 www.komputerswiat.pl
+0.0.0.0 gemius.pl
