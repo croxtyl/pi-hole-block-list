@@ -1,0 +1,14 @@
+0.0.0.0 furxenity.xyz
+0.0.0.0 urlek.pl
+0.0.0.0 oli11gh.top
+0.0.0.0 chomikuj.pl
+0.0.0.0 cda.pl
+0.0.0.0 www.cda.pl
+0.0.0.0 kryptex.com
+0.0.0.0 www.kryptex.com
+0.0.0.0 vape.gg
+0.0.0.0 www.vape.gg
+0.0.0.0 nicehash.com
+0.0.0.0 www.nicehash.com
+0.0.0.0 komputerswiat.pl
+0.0.0.0 www.komputerswiat.pl
