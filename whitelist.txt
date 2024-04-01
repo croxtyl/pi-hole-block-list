@@ -14,3 +14,5 @@
 0.0.0.0 www.komputerswiat.pl
 0.0.0.0 gemius.pl
 0.0.0.0 unmineable.com
+0.0.0.0 binance.com
+0.0.0.0 zpool.ca
