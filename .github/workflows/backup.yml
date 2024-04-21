@@ -14,9 +14,18 @@ jobs:
 
     - name: Download Files
       run: |
+        curl -o backup/ads.txt https://blocklist.oli11gh.top/f/ads.txt
+        curl -o backup/ads-2.txt https://blocklist.oli11gh.top/f/ads-2.txt
+        curl -o backup/ads-3.txt https://blocklist.oli11gh.top/f/ad-s3.txt
         curl -o backup/gen.txt https://blocklist.oli11gh.top/f/gen.txt
-        curl -o backup/gen2.txt https://blocklist.oli11gh.top/f/gen2.txt
-        curl -o backup/gen3.txt https://blocklist.oli11gh.top/f/gen3.txt
+        curl -o backup/gen-2.txt https://blocklist.oli11gh.top/f/gen-2.txt
+        curl -o backup/gen-3.txt https://blocklist.oli11gh.top/f/gen-3.txt
+        curl -o backup/gen-4.txt https://blocklist.oli11gh.top/f/gen-4.txt
+        curl -o backup/gen-5.txt https://blocklist.oli11gh.top/f/gen-5.txt
+        curl -o backup/other-junk.txt https://blocklist.oli11gh.top/f/other-junk.txt
+        curl -o backup/porn.txt https://blocklist.oli11gh.top/f/porn.txt
+        curl -o backup/porn-2.txt https://blocklist.oli11gh.top/f/porn-2.txt
+        curl -o backup/porn-3.txt https://blocklist.oli11gh.top/f/porn-3.txt
 
     - name: Commit and Push Changes
       env:
