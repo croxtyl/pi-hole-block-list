@@ -19,6 +19,8 @@ jobs:
         curl -o backup/gen3.txt https://blocklist.oli11gh.top/f/gen3.txt
 
     - name: Commit and Push Changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
         git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name "Backuper"
