@@ -1,6 +1,6 @@
 name: Backup Blocklist
 
-on:
+on: push
   schedule:
     - cron: '0 */6 * * *'
 
