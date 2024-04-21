@@ -1,8 +1,9 @@
 name: Backup Blocklist
 
-on: push
-#  schedule:
-#    - cron: '0 */6 * * *'
+#on: push
+on:
+  schedule:
+    - cron: '0 */6 * * *'
 
 jobs:
   backup_files:
