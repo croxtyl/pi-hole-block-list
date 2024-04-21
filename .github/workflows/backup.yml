@@ -15,13 +15,13 @@ jobs:
     - name: Download Files
       run: |
         mkdir backup
-        curl -o backup/gen.txt https://example.com/gen.txt
-        curl -o backup/gen2.txt https://example.com/gen2.txt
-        curl -o backup/gen3.txt https://example.com/gen3.txt
+        curl -o backup/gen.txt https://blocklist.oli11gh.top/f/gen.txt
+        curl -o backup/gen2.txt https://blocklist.oli11gh.top/f/gen2.txt
+        curl -o backup/gen3.txt https://blocklist.oli11gh.top/f/gen3.txt
 
     - name: Commit and Push Changes
       run: |
-        git config --local user.email ${{secrets.EMAIL}}
+        git config --local user.email ${{ secrets.EMAIL }}
         git config --local user.name "Backuper"
         git add .
         git commit -m "Create blocklist backup"
