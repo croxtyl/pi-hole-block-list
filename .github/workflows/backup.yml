@@ -14,7 +14,6 @@ jobs:
 
     - name: Download Files
       run: |
-        mkdir backup
         curl -o backup/gen.txt https://blocklist.oli11gh.top/f/gen.txt
         curl -o backup/gen2.txt https://blocklist.oli11gh.top/f/gen2.txt
         curl -o backup/gen3.txt https://blocklist.oli11gh.top/f/gen3.txt
