@@ -1,9 +1,9 @@
 name: Generate Blocklist Hosts
 
-#on: push
-on:
-  schedule:
-    - cron: '0 */2 * * *'
+on: push
+#on:
+#  schedule:
+#    - cron: '0 */2 * * *'
 
 jobs:
   backup_files:
