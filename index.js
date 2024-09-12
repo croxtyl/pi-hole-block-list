@@ -202,20 +202,17 @@ const sourceFiles = [
     target: path.join('hosts', 'other.txt')
   },
 ];
+const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt'; // URL do whitelisty
+const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 
-const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
-const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.3';
+const filterList = ['0.0.0.0', '|', '^', '\\n', '(', ')', '\\', '127.0.0.1', '255.255.255.255'];
+const startFilter = ['#', '.', '!', ':', ' ', '\t'];
 
 async function getData(url) {
   try {
     const response = await axios.get(url, {
       headers: { 'User-Agent': userAgent }
     });
-
-    if (response.headers['content-type'].includes('text/html')) {
-      throw new Error('HTML content detected, using backup');
-    }
-
     return response.data;
   } catch (err) {
     console.error('Error fetching ' + url + ': ' + err.message);
@@ -232,46 +229,48 @@ function readLocalBackup(filePath) {
   }
 }
 
-function removeHtmlTags(data) {
-  return data.replace(/<\/?[^>]+(>|$)/g, '');
-}
+function filterDomains(data, whitelist) {
+  let domains = [];
+  let lines = data.split('\n');
 
-function filterDomains(data) {
-  return data.split('\n')
-    .map(line => line.trim())
-    .filter(line => {
-      if (line === '') return false;
+  lines.forEach(line => {
+    line = line.trim();
 
-      if (line.startsWith('#')) return false;
+    if (startFilter.some(start => line.startsWith(start))) {
+      return;
+    }
 
-      if (/%[0-9a-fA-F]{2}/.test(line)) return false;
-
-      if (/[\{\}\[\]]/.test(line)) return false;
-
-      if (/error/i.test(line)) return false;
-
-      const isIPAddress = /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/.test(line);
-      if (isIPAddress) return true;
-
-      const parts = line.split(/\s+/);
-      if (parts.length === 2 && /^(0\.0\.0\.0|127\.0\.0\.1)$/.test(parts[0])) {
-        return /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(parts[1]);
-      }
-
-      const isDomain = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(line);
-      return isDomain;
+    filterList.forEach(filter => {
+      line = line.replace(filter, '');
     });
-}
 
+    if (line.includes('#')) {
+      line = line.split('#')[0].trim();
+    }
+
+    if (line.length > 0 && !whitelist.has(line)) {
+      domains.push(line);
+    }
+  });
+
+  return domains;
+}
 
 async function getWhitelist() {
-  let data = await getData(whitelistUrl);
-  if (data === null) {
+  let whitelistData = await getData(whitelistUrl);
+  if (whitelistData === null) {
     console.error('Failed to fetch whitelist; it will be empty.');
-    data = '';
+    whitelistData = '';
   }
-  data = removeHtmlTags(data);
-  return new Set(data.split('\n').map(line => line.trim()).filter(line => line !== ''));
+
+  let whitelist = new Set(
+    whitelistData
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0 && !line.startsWith('#'))
+  );
+
+  return whitelist;
 }
 
 async function updateFilesAndCommit() {
@@ -279,22 +278,21 @@ async function updateFilesAndCommit() {
 
   for (let fileSet of sourceFiles) {
     let content = '';
+
     for (let source of fileSet.urls) {
       let data = await getData(source.url);
       if (data === null) {
         console.error('Using backup for ' + source.url);
         data = readLocalBackup(source.backup);
-      } else {
-        data = removeHtmlTags(data);
       }
-      if (data.trim() !== '') {
-        content += data + '\n';
-      }
+      content += data + '\n';
     }
 
-    let uniqueLines = new Set(filterDomains(content).filter(line => !whitelist.has(line)));
+    const domains = filterDomains(content, whitelist);
 
-    let finalContent = [...uniqueLines].join('\n') + '\n';
+    const uniqueDomains = [...new Set(domains)];
+    const finalContent = uniqueDomains.join('\n') + '\n';
+
     fs.writeFileSync(fileSet.target, finalContent);
     console.log('Created hosts file ' + fileSet.target);
   }
