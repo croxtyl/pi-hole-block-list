@@ -246,20 +246,23 @@ function filterDomains(data) {
 
       if (/%[0-9a-fA-F]{2}/.test(line)) return false;
 
-      if (/[\{\}\[\]]/.test(line) || /error/i.test(line)) return false;
+      if (/[\{\}\[\]]/.test(line)) return false;
+
+      if (/error/i.test(line)) return false;
+
+      const isIPAddress = /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/.test(line);
+      if (isIPAddress) return true;
 
       const parts = line.split(/\s+/);
       if (parts.length === 2 && /^(0\.0\.0\.0|127\.0\.0\.1)$/.test(parts[0])) {
         return /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(parts[1]);
       }
 
-      const isIPAddress = /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/.test(line);
-      if (isIPAddress) return false;
-
       const isDomain = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(line);
       return isDomain;
     });
 }
+
 
 async function getWhitelist() {
   let data = await getData(whitelistUrl);
