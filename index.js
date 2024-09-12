@@ -239,16 +239,20 @@ function removeHtmlTags(data) {
 function filterDomains(data) {
   return data.split('\n')
     .map(line => line.trim())
-    .filter(line => {
+    .map(line => {
+      const parts = line.split(/\s+/);
+      if (parts.length === 2 && /^(0\.0\.0\.0|127\.0\.0\.1)$/.test(parts[0])) {
+        return parts[1];
+      }
       const isIPAddress = /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/.test(line);
-
       const isComment = line.startsWith('#') || line === '';
-
       const isDomain = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(line);
 
-      return !isIPAddress && !isComment && isDomain;
-    });
+      return !isIPAddress && !isComment && isDomain ? line : null;
+    })
+    .filter(line => line !== null);
 }
+
 
 async function getWhitelist() {
   let data = await getData(whitelistUrl);
