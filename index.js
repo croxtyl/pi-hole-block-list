@@ -204,13 +204,18 @@ const sourceFiles = [
 ];
 
 const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
-const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.3';
 
 async function getData(url) {
   try {
     const response = await axios.get(url, {
       headers: { 'User-Agent': userAgent }
     });
+
+    if (response.headers['content-type'].includes('text/html')) {
+      throw new Error('HTML content detected, using backup');
+    }
+
     return response.data;
   } catch (err) {
     console.error('Error fetching ' + url + ': ' + err.message);
@@ -229,6 +234,20 @@ function readLocalBackup(filePath) {
 
 function removeHtmlTags(data) {
   return data.replace(/<\/?[^>]+(>|$)/g, '');
+}
+
+function filterDomains(data) {
+  return data.split('\n')
+    .map(line => line.trim())
+    .filter(line => {
+      const isIPAddress = /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/.test(line);
+
+      const isComment = line.startsWith('#') || line === '';
+
+      const isDomain = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(line);
+
+      return !isIPAddress && !isComment && isDomain;
+    });
 }
 
 async function getWhitelist() {
@@ -259,12 +278,7 @@ async function updateFilesAndCommit() {
       }
     }
 
-    let uniqueLines = new Set();
-    content.split('\n').forEach((line) => {
-      if (line.trim() !== '' && !line.startsWith('#') && !whitelist.has(line)) {
-        uniqueLines.add(line);
-      }
-    });
+    let uniqueLines = new Set(filterDomains(content).filter(line => !whitelist.has(line)));
 
     let finalContent = [...uniqueLines].join('\n') + '\n';
     fs.writeFileSync(fileSet.target, finalContent);
