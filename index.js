@@ -206,16 +206,6 @@ const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-li
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
-function isDomainOrIP(line) {
-  const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
-  const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-  return domainRegex.test(line) || ipRegex.test(line);
-}
-
-function cleanDomain(line) {
-  if (!line) return '';
-  return line.replace(/^https?:\/\/(www\.)?/, '').split('/')[0].trim();
-}
 
 async function getData(url) {
   try {
@@ -238,84 +228,68 @@ function readLocalBackup(filePath) {
   }
 }
 
-function filterDomains(data, whitelist) {
-  let domains = [];
-  let lines = data.split('\n');
+function cleanLine(line) {
+  if (!line) return '';
+  line = line.trim();
+  
+  line = line.replace(/^https?:\/\/(www\.)?/, '');
+  
+  line = line.replace(/[{}<>;=+|^]/g, '').trim();
+  
+  line = line.split('#')[0].trim();
 
-  lines.forEach(line => {
-    if (!line) return;
+  if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
+    line = line.split(' ')[1] || '';
+  }
+  
+  return line;
+}
 
-    line = line.trim();
-
-    if (line.startsWith('#') || line.length === 0) return;
-
-    line = line.split('#')[0].trim();
-
-    if (/^(0\.0\.0\.0|127\.0\.0\.1)/.test(line)) {
-      line = line.split(' ')[1];
-    }
-
-    line = cleanDomain(line);
-
-    if (isDomainOrIP(line)) {
-      if (!whitelist.has(line)) {
-        domains.push(line);
-      } else {
-        //console.log(`Omitted by whitelist: ${line}`);
+function filterDomains(content) {
+  let uniqueLines = new Set();
+  content.split('\n').forEach((line) => {
+    line = cleanLine(line);
+    if (line && !line.startsWith('#')) {
+      if (line.includes('.')) {
+        uniqueLines.add(line);
+      } else if (/^\d{1,3}(\.\d{1,3}){3}$/.test(line)) {
+        uniqueLines.add(line);
       }
-    } else {
-      //console.log(`Invalid entry omitted: ${line}`);
     }
   });
-
-  console.log(`Filtered ${domains.length} valid domains/IPs.`);
-  return domains;
+  return [...uniqueLines].join('\n');
 }
 
 async function getWhitelist() {
-  let whitelistData = await getData(whitelistUrl);
-  if (whitelistData === null) {
+  let data = await getData(whitelistUrl);
+  if (data === null) {
     console.error('Failed to fetch whitelist; it will be empty.');
-    whitelistData = '';
+    data = '';
   }
-
-  let whitelist = new Set(
-    whitelistData
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0 && !line.startsWith('#'))
-  );
-
-  console.log(`Loaded ${whitelist.size} entries in the whitelist.`);
-  return whitelist;
+  data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
+  return new Set(data);
 }
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
-  let totalDomains = new Set(); 
-
   for (let fileSet of sourceFiles) {
     let content = '';
-
     for (let source of fileSet.urls) {
       let data = await getData(source.url);
       if (data === null) {
         console.error('Using backup for ' + source.url);
         data = readLocalBackup(source.backup);
       }
-      console.log(`Fetched data from ${source.url} with length: ${data.length}`);
-      content += data + '\n';
+      if (data) {
+        content += data + '\n';
+      }
     }
-
-    let filteredDomains = filterDomains(content, whitelist);
-
-    filteredDomains.forEach(domain => totalDomains.add(domain));
-
-    fs.writeFileSync(fileSet.target, [...totalDomains].join('\n') + '\n');
+    let filteredContent = filterDomains(content);
+    let finalContent = filteredContent.split('\n').filter(line => line && !whitelist.has(line)).join('\n') + '\n';
+    fs.writeFileSync(fileSet.target, finalContent);
     console.log('Created hosts file ' + fileSet.target);
+    console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length}`);
   }
-
-  console.log(`Total unique domains/IPs processed: ${totalDomains.size}`);
 }
 
 updateFilesAndCommit();
