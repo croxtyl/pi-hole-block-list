@@ -206,6 +206,7 @@ const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-li
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
+
 async function getData(url) {
   try {
     const response = await axios.get(url, {
@@ -230,25 +231,17 @@ function readLocalBackup(filePath) {
 function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
-
-  line = line.replace(/^https?:\/\//, '');
-
-  try {
-    line = decodeURIComponent(line);
-  } catch (err) {
-    console.error('Error decoding URL: ' + line);
-  }
-
-  line = line.split('/')[0].trim();
-
-  line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
-
+  
+line = line.replace(/^https?:\/\//, '');
+  
+  line = line.replace(/[{}<>;=+|^]/g, '').trim();
+  
   line = line.split('#')[0].trim();
 
   if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
     line = line.split(' ')[1] || '';
   }
-
+  
   return line;
 }
 
