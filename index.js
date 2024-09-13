@@ -206,7 +206,6 @@ const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-li
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
-
 async function getData(url) {
   try {
     const response = await axios.get(url, {
@@ -231,34 +230,43 @@ function readLocalBackup(filePath) {
 function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
-  
-line = line.replace(/^https?:\/\//, '');
-  
-  line = line.replace(/[{}<>;=+|^]/g, '').trim();
-  
-  line = line.split('#')[0].trim();
 
-  if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
-    line = line.split(' ')[1] || '';
+  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
+
+  line = line.split('/')[0].trim();
+
+  line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
+
+  line = line.split('#')[0].trim();
+  line = line.split('!')[0].trim();
+
+  if (line.startsWith('#') || line.startsWith('!') || line === '') {
+    return '';
   }
-  
+
+//  if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
+//   line = line.split(' ')[1] || '';
+//  }
+
   return line;
 }
 
 function filterDomains(content) {
   let uniqueLines = new Set();
+  
+  const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
+
   content.split('\n').forEach((line) => {
     line = cleanLine(line);
-    if (line && !line.startsWith('#')) {
-      if (line.includes('.')) {
-        uniqueLines.add(line);
-      } else if (/^\d{1,3}(\.\d{1,3}){3}$/.test(line)) {
-        uniqueLines.add(line);
-      }
+
+    if (line && !forbiddenChars.test(line)) {
+      uniqueLines.add(line);
     }
   });
+
   return [...uniqueLines].join('\n');
 }
+
 
 async function getWhitelist() {
   let data = await getData(whitelistUrl);
@@ -284,8 +292,11 @@ async function updateFilesAndCommit() {
         content += data + '\n';
       }
     }
+
     let filteredContent = filterDomains(content);
+
     let finalContent = filteredContent.split('\n').filter(line => line && !whitelist.has(line)).join('\n') + '\n';
+
     fs.writeFileSync(fileSet.target, finalContent);
     console.log('Created hosts file ' + fileSet.target);
     console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length}`);
