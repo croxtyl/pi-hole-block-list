@@ -202,8 +202,9 @@ const sourceFiles = [
     target: path.join('hosts', 'other.txt')
   },
 ];
-const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt'; // URL do whitelisty
-const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
+//const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
 function isDomainOrIP(line) {
   const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11}?$/;
