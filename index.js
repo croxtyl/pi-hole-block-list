@@ -292,7 +292,7 @@ async function getWhitelist() {
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
-
+  let totalDomains = new Set();
   for (let fileSet of sourceFiles) {
     let content = '';
 
