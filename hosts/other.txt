@@ -11,6 +11,8 @@ an.facebook.com
 adsense.google.com
 adservice.google.ae
 adservice.google.ca
+adservice.google.co.id
+adservice.google.co.in
 adservice.google.co.kr
 adservice.google.com
 adservice.google.com.ar
