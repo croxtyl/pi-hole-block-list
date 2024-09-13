@@ -217,7 +217,6 @@ function cleanDomain(line) {
   return line.replace(/^https?:\/\/(www\.)?/, '').split('/')[0].trim();
 }
 
-
 async function getData(url) {
   try {
     const response = await axios.get(url, {
@@ -258,11 +257,18 @@ function filterDomains(data, whitelist) {
 
     line = cleanDomain(line);
 
-    if (isDomainOrIP(line) && !whitelist.has(line)) {
-      domains.push(line);
+    if (isDomainOrIP(line)) {
+      if (!whitelist.has(line)) {
+        domains.push(line);
+      } else {
+        console.log(`Omitted by whitelist: ${line}`);
+      }
+    } else {
+      console.log(`Invalid entry omitted: ${line}`);
     }
   });
 
+  console.log(`Filtered ${domains.length} valid domains/IPs.`);
   return domains;
 }
 
@@ -280,6 +286,7 @@ async function getWhitelist() {
       .filter(line => line.length > 0 && !line.startsWith('#'))
   );
 
+  console.log(`Loaded ${whitelist.size} entries in the whitelist.`);
   return whitelist;
 }
 
@@ -295,6 +302,7 @@ async function updateFilesAndCommit() {
         console.error('Using backup for ' + source.url);
         data = readLocalBackup(source.backup);
       }
+      console.log(`Fetched data from ${source.url} with length: ${data.length}`);
       content += data + '\n';
     }
 
@@ -303,9 +311,12 @@ async function updateFilesAndCommit() {
     const uniqueDomains = [...new Set(domains)];
     const finalContent = uniqueDomains.join('\n') + '\n';
 
+    console.log(`Writing ${uniqueDomains.length} unique domains to ${fileSet.target}`);
     fs.writeFileSync(fileSet.target, finalContent);
     console.log('Created hosts file ' + fileSet.target);
+    uniqueDomains.forEach(domain => totalDomains.add(domain));
   }
+  console.log(`Total unique domains/IPs across all files: ${totalDomains.size}`);
 }
 
 updateFilesAndCommit();
