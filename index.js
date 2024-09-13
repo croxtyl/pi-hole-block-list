@@ -205,8 +205,15 @@ const sourceFiles = [
 const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt'; // URL do whitelisty
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 
-const filterList = ['0.0.0.0', '|', '^', '\\n', '(', ')', '\\', '127.0.0.1', '255.255.255.255'];
-const startFilter = ['#', '.', '!', ':', ' ', '\t'];
+function isDomainOrIP(line) {
+  const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11}?$/;
+  const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+  return domainRegex.test(line) || ipRegex.test(line);
+}
+
+function cleanDomain(line) {
+  return line.replace(/^https?:\/\/(www\.)?/, '').split('/')[0].trim();
+}
 
 async function getData(url) {
   try {
@@ -236,19 +243,17 @@ function filterDomains(data, whitelist) {
   lines.forEach(line => {
     line = line.trim();
 
-    if (startFilter.some(start => line.startsWith(start))) {
-      return;
+    if (line.startsWith('#') || line.length === 0) return;
+
+    line = line.split('#')[0].trim();
+
+    if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
+      line = line.split(' ')[1];
     }
 
-    filterList.forEach(filter => {
-      line = line.replace(filter, '');
-    });
+    line = cleanDomain(line);
 
-    if (line.includes('#')) {
-      line = line.split('#')[0].trim();
-    }
-
-    if (line.length > 0 && !whitelist.has(line)) {
+    if (isDomainOrIP(line) && !whitelist.has(line)) {
       domains.push(line);
     }
   });
