@@ -207,7 +207,7 @@ const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-li
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
 function isDomainOrIP(line) {
-  const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-_]+\.[a-zA-Z]{2,11}?$/;
+  const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
   const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
   return domainRegex.test(line) || ipRegex.test(line);
 }
@@ -251,7 +251,7 @@ function filterDomains(data, whitelist) {
 
     line = line.split('#')[0].trim();
 
-    if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
+    if (/^(0\.0\.0\.0|127\.0\.0\.1)/.test(line)) {
       line = line.split(' ')[1];
     }
 
@@ -261,10 +261,10 @@ function filterDomains(data, whitelist) {
       if (!whitelist.has(line)) {
         domains.push(line);
       } else {
-        console.log(`Omitted by whitelist: ${line}`);
+        //console.log(`Omitted by whitelist: ${line}`);
       }
     } else {
-      console.log(`Invalid entry omitted: ${line}`);
+      //console.log(`Invalid entry omitted: ${line}`);
     }
   });
 
@@ -292,7 +292,8 @@ async function getWhitelist() {
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
-  let totalDomains = new Set();
+  let totalDomains = new Set(); 
+
   for (let fileSet of sourceFiles) {
     let content = '';
 
@@ -306,17 +307,15 @@ async function updateFilesAndCommit() {
       content += data + '\n';
     }
 
-    const domains = filterDomains(content, whitelist);
+    let filteredDomains = filterDomains(content, whitelist);
 
-    const uniqueDomains = [...new Set(domains)];
-    const finalContent = uniqueDomains.join('\n') + '\n';
+    filteredDomains.forEach(domain => totalDomains.add(domain));
 
-    console.log(`Writing ${uniqueDomains.length} unique domains to ${fileSet.target}`);
-    fs.writeFileSync(fileSet.target, finalContent);
+    fs.writeFileSync(fileSet.target, [...totalDomains].join('\n') + '\n');
     console.log('Created hosts file ' + fileSet.target);
-    uniqueDomains.forEach(domain => totalDomains.add(domain));
   }
-  console.log(`Total unique domains/IPs across all files: ${totalDomains.size}`);
+
+  console.log(`Total unique domains/IPs processed: ${totalDomains.size}`);
 }
 
 updateFilesAndCommit();
