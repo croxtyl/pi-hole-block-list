@@ -1,447 +1,447 @@
- events.hotjar.io
- claritybt.freshmarketer.com
- fwtracks.freshmarketer.com
- tools.mouseflow.com
- cdn-test.mouseflow.com
- mouseflow.com
- realtime.luckyorange.com
- pixel.facebook.com
- an.facebook.com
- 2mdn.net
- adsense.google.com
- adservice.google.ae
- adservice.google.ca
- adservice.google.co.id
- adservice.google.co.in
- adservice.google.co.kr
- adservice.google.com
- adservice.google.com.ar
- adservice.google.com.au
- adservice.google.com.br
- adservice.google.com.co
- adservice.google.com.gt
- adservice.google.com.mx
- adservice.google.com.pe
- adservice.google.com.ph
- adservice.google.com.pk
- adservice.google.com.sg
- adservice.google.com.tr
- adservice.google.com.tw
- adservice.google.com.vn
- adservice.google.co.uk
- adservice.google.co.za
- adservice.google.de
- adservice.google.dk
- adservice.google.es
- adservice.google.fr
- adservice.google.it
- adservice.google.nl
- adservice.google.no
- adservice.google.pl
- adservice.google.ru
- adservice.google.vg
- app-measurement.com
- dai.google.com
- doubleclickbygoogle.com
- doubleclick.com
- doubleclick.net
- googleadservices.com
- googlesyndication-cn.com
- googlesyndication.com
- googletagservices.com
- gstaticadssl.l.google.com
- s0-2mdn-net.l.google.com
- aax-eu.amazon.co.uk
- aax-eu.amazon.de
- aax-eu.amazon.es
- aax-eu.amazon.fr
- aax-eu.amazon.in
- aax-eu.amazon.it
- aax-eu.amazon.nl
- aax-eu.amazon.se
- aax-eu-dub.amazon.com
- aax-eu-retail-direct.amazon-adsystem.com
- aax-fe.amazon.com.au
- aax-us-iad.amazon.com
- advertising.a2z.com
- advertising.amazon.dev
- amazon-adsystem.amazon.com
- amazon-adsystem.com
- amazon.dev
- assoc-amazon.ca
- assoc-amazon.com
- assoc-amazon.co.uk
- assoc-amazon.de
- assoc-amazon.fr
- mads.amazon.com
- mads-eu.amazon.com
- rcm.amazon.com
- rcm-ca.amazon.ca
- rcm-de.amazon.de
- rcm-es.amazon.es
- rcm-fr.amazon.fr
- rcm-it.amazon.it
- rcm-uk.amazon.co.uk
- serving-sys.com
- sizmdx.com
- sizmek.com
- tk-adsystem.a2z.com
- video-ads.a2z.com
- activity.windows.com
- ad.xiaomi.com
- game.xiaomi.com
- pdc.micloud.xiaomi.net
- 223.202.68.86
- notice.game.xiaomi.com
- app.chat.xiaomi.net
- api.miui.security.xiaomi.com
- api.vip.miui.com
- contactapi.micloud.xiaomi.net
- api.ad.xiaomi.com
- miui.com
- 220.181.47.186
- sec-cdn.static.xiaomi.net
- data.mistat.xiaomi.com
- xiaomi.com
- micloud.xiaomi.net
- 42.62.94.93
- resolver.gslb.mi-idc.com
- chinaunicom.com
- 42.62.94.127
- xiaomi.net
- wifiapi.micloud.xiaomi.net
- 42.62.94.152
- 114.54.23.44
- 120.134.33.89
- sdkconfig.ad.xiaomi.com
- 223.202.68.93
- 114.54.23.8
- miui.net
- 114.54.23.5
- static.pay.baidu.com
- als.baidu.com
- update.miui.com
- tracking.miui.com
- r.browser.miui.com
- tb1.bdstatic.com
- weatherapi.market.xiaomi.com
- test.ad.xiaomi.com
- api.browser.miui.com
- o2o.api.xiaomi.com
- downapp.baidu.com
- ms.vipstatic.com
- a-0001.a-msedge.net
- a-0002.a-msedge.net
- a-0003.a-msedge.net
- a-0004.a-msedge.net
- a-0005.a-msedge.net
- a-0006.a-msedge.net
- a-0007.a-msedge.net
- a-0008.a-msedge.net
- a-0009.a-msedge.net
- a-msedge.net
- a.ads1.msn.com
- a.ads2.msads.net
- a.ads2.msn.com
- a.rad.msn.com
- ac3.msn.com
- ad.doubleclick.net
- adnexus.net
- adnxs.com
- ads.arcct.msn.com
- ads.msn.com
- ads1.msads.net
- ads1.msn.com
- aidps.atdmt.com
- aka-cdn-ns.adtech.de
- api.edgeoffer.microsoft.com
- api.vcservice.webxtsvc-int.microsoft.com
- api.webxtsvc.microsoft.com
- arc.msn.com
- assets.msn.com
- az361816.vo.msecnd.net
- az512334.vo.msecnd.net
- b.ads1.msn.com
- b.ads2.msads.net
- b.rad.msn.com
- browser.events.data.msn.com
- browser.pipe.aria.microsoft.com
- bs.serving-sys.com
- c.atdmt.com
- c.live.com
- c.msn.com
- c1.microsoft.com
- ca.telemetry.microsoft.com
- cache.datamart.windows.com
- cdn.atdmt.com
- cdn.edgeoffer.microsoft.com
- cds26.ams9.msecn.net
- choice.microsoft.com
- choice.microsoft.com.nsatc.net
- choice.microsoft.com.nstac.net
- citrix.onmicrosoft.com
- clarity.ms
- clientfd.family.microsoft.com
- cloudbrowser.microsoft.com
- compatexchange.cloudapp.net
- config.edge.skype.com
- corp.sts.microsoft.com
- corpext.msitadfs.glbdns2.microsoft.com
- crl.microsoft.com
- cs1.wpc.v0cdn.net
- customervoice.microsoft.com
- db3aqu.atdmt.com
- db3wns2011111.wns.windows.com
- df.telemetry.microsoft.com
- diagnostics.support.microsoft.com
- ec.atdmt.com
- edge.cloudbrowser.microsoft.com
- edgeshoppingstatic.azureedge.net
- edgetippingservice.webxtsvc.microsoft.com
- events-sandbox.data.msn.com
- events.data.microsoft.com
- family.api.account.microsoft.com
- farevents.family.microsoft.com
- fe3.delivery.dsp.mp.microsoft.com.nsatc.net
- feedback.microsoft-hohm.com
- feedback.search.microsoft.com
- feedback.smartscreen.microsoft.com
- feedback.windows.com
- flex.msn.com
- forms.microsoft.com
- functional.events.data.microsoft.com
- g.msn.com
- graph.microsoft.com
- h1.msn.com
- i1.services.social.microsoft.com
- i1.services.social.microsoft.com.nsatc.net
- inference.location.live.com
- instrumentExport.cp.microsoft.com
- lb1.www.ms.akadns.net
- live.rads.msn.com
- local.cloudbrowser.microsoft.com
- m.adnxs.com
- m.hotmail.com
- microsoftnews.msn.com
- mobile.events.data.microsoft.com
- msft.sts.microsoft.com
- msftncsi.com
- msntest.serving-sys.com
- mwservice.xpay-int.microsoft.com
- ntp.msn.com
- nw-umwatson.events.data.microsoft.com
- oca.telemetry.microsoft.com
- oca.telemetry.microsoft.com.nsatc.net
- petrol.office.microsoft.com
- pptsgs.officeapps.live.com
- pre.footprintpredict.com
- preview.msn.com
- pricelist.skype.com
- prod.rewardsplatform.microsoft.com
- rad.live.com
- rad.msn.com
- redir.metaservices.microsoft.com
- reports.wes.df.telemetry.microsoft.com
- s.gateway.messenger.live.com
- s0.2mdn.net
- sO.2mdn.net
- schemas.microsoft.akadns.net
- schemas.microsoft.com
- sdx.microsoft.com
- secure.adnxs.com
- secure.flashtalking.com
- self.events.data.microsoft.com
- services.wes.df.telemetry.microsoft.com
- spynet2.microsoft.com
- spynetalt.microsoft.com
- sqm.df.telemetry.microsoft.com
- sqm.telemetry.microsoft.com
- sqm.telemetry.microsoft.com.nsatc.net
- static.2mdn.net
- statsfe1.ws.microsoft.com
- statsfe2.update.microsoft.com.akadns.net
- statsfe2.ws.microsoft.com
- survey.watson.microsoft.com
- telecommand.telemetry.microsoft.com
- telecommand.telemetry.microsoft.com.nsatc.net
- telemetry.appex.bing.net
- telemetry.microsoft.com
- telemetry.urs.microsoft.com
- tip.customervoice.microsoft.com
- tokenization.cp.microsoft.com
- v10.vortex-win.data.microsoft.com
- vcservice.webxtsvc.microsoft.com
- view.atdmt.com
- view.officeapps.live.com
- vortex-bn2.metron.live.com.nsatc.net
- vortex-cy2.metron.live.com.nsatc.net
- vortex-sandbox.data.microsoft.com
- vortex-win.data.metron.live.com.nsatc.net
- vortex-win.data.microsoft.com
- vortex.data.glbdns2.microsoft.com
- vortex.data.microsoft.com
- watson.live.com
- watson.microsoft.com
- watson.ppe.telemetry.microsoft.com
- watson.telemetry.microsoft.com
- watson.telemetry.microsoft.com.nsatc.net
- web.vortex-sandbox.data.msn.com
- web.vortex.data.microsoft.com
- web.vortex.data.msn.com
- webxtsvc.microsoft.com
- wes.df.telemetry.microsoft.com
- cs.dds.microsoft.com
- anonymous.ads.brave.com
- personalization.services.msn.com
- checkappexec.microsoft.com
- array609.prod.do.dsp.mp.microsoft.com
- logs1406.xiti.com
- array608.prod.do.dsp.mp.microsoft.com
- fr-app-chat-global-xiaomi-net-6-2041664722.eu-central-1.elb.amazonaws.com
- mqtt-mini.facebook.com
- pro.webstat.pl
- ponghive.org
- array803.prod.do.dsp.mp.microsoft.com
- array811.prod.do.dsp.mp.microsoft.com
- array804.prod.do.dsp.mp.microsoft.com
- tsfe.trafficshaping.dsp.mp.microsoft.com
- 41fdd1e9c4e667843454b1529e6835ff.azr.footprintdns.com
- wac-ring.msedge.net
- devicemetadataservice.trafficmanager.net
- 2.53.2.10.in-addr.arpa
- array812.prod.do.dsp.mp.microsoft.com
- array802.prod.do.dsp.mp.microsoft.com
- array806.prod.do.dsp.mp.microsoft.com
- array808.prod.do.dsp.mp.microsoft.com
- array505.prod.do.dsp.mp.microsoft.com
- array509.prod.do.dsp.mp.microsoft.com
- array518.prod.do.dsp.mp.microsoft.com
- disc501.prod.do.dsp.mp.microsoft.com
- geo.prod.do.dsp.mp.microsoft.com
- geover.prod.do.dsp.mp.microsoft.com
- kv501.prod.do.dsp.mp.microsoft.com
- settings-win.data.microsoft.com
- cp501.prod.do.dsp.mp.microsoft.com
- disc601.prod.do.dsp.mp.microsoft.com
- default.exp-tas.com
- 106.0.168.192.in-addr.arpa
- array606.prod.do.dsp.mp.microsoft.com
- epdg.epc.mnc003.mcc260.pub.3gppnetwork.org
- array613.prod.do.dsp.mp.microsoft.com
- cp601.prod.do.dsp.mp.microsoft.com
- kv601.prod.do.dsp.mp.microsoft.com
- array604.prod.do.dsp.mp.microsoft.com
- 105.0.168.192.in-addr.arpa
- fr-app-chat-global-xiaomi-net-7-1441165053.eu-central-1.elb.amazonaws.com
- fr-app-chat-global-xiaomi-net-5-1350631744.eu-central-1.elb.amazonaws.com
- fr-app-chat-global-xiaomi-net4-368828178.eu-central-1.elb.amazonaws.com
- 132.0.168.192.in-addr.arpa
- fr-app-chat-global-xiaomi-net-1516654448.eu-central-1.elb.amazonaws.com
- fr-app-chat-global-xiaomi-net-8-491629200.eu-central-1.elb.amazonaws.com
- fr.resolver.msg.global.xiaomi.net
- 102.0.168.192.in-addr.arpa
- 2.tlu.dl.delivery.mp.microsoft.com
- 223.0.168.192.in-addr.arpa
- 4.tlu.dl.delivery.mp.microsoft.com
- fr-app-chat-global-xiaomi-net-3-1830982956.eu-central-1.elb.amazonaws.com
- fr-app-chat-global-xiaomi-net2-2117517874.eu-central-1.elb.amazonaws.com
- fp-afd.azureedge.net
- array805.prod.do.dsp.mp.microsoft.com
- kv801.prod.do.dsp.mp.microsoft.com
- disc801.prod.do.dsp.mp.microsoft.com
- 2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.5.2.0.0.1.c.f.ip6.arpa
- geo.ads.brave.com
- api-analytics-de.zepp.com
- fr-resolver-msg-global-xiaomi-n-916220403.eu-central-1.elb.amazonaws.com
- fr.app.chat.global.xiaomi.net
- fr-im-fe-823642335.eu-central-1.elb.amazonaws.com
- 206.0.168.192.in-addr.arpa
- 109.0.168.192.in-addr.arpa
- fd.api.iris.microsoft.com
- widget.intercom.io
- fp2e7a.wpc.phicdn.net
- static.criteo.net
- pagead2.googlesyndication.com
- pixel6.wp.pl
- pixel.wp.pl
- stats.wp.com
- advertising.apple.com
- iadsdk.apple.com
- metrics.icloud.com
- metrics.mzstatic.com
- api-adservices.apple.com
- books-analytics-events.apple.com
- weather-analytics-events.apple.com
- notes-analytics-events.apple.com
- samsungads.com
- smetrics.samsung.com
- nmetrics.samsung.com
- samsung-com.112.2o7.net
- analytics-api.samsunghealthcn.com
- metrics.data.hicloud.com
- metrics2.data.hicloud.com
- grs.hicloud.com
- logservice.hicloud.com
- logservice1.hicloud.com
- logbak.hicloud.com
- adsfs.oppomobile.com
- adx.ads.oppomobile.com
- ck.ads.oppomobile.com
- data.ads.oppomobile.com
- data.mistat.india.xiaomi.com
- data.mistat.rus.xiaomi.com
- sdkconfig.ad.intl.xiaomi.com
- tracking.rus.miui.com
- iot-eu-logser.realme.com
- iot-logser.realme.com
- bdapi-ads.realmemobile.com
- bdapi-in-ads.realmemobile.com
- ads.youtube.com
- events.reddit.com
- events.redditmedia.com
- analytics.google.com
- click.googleanalytics.com
- google-analytics.com
- ssl.google-analytics.com
- adtago.s3.amazonaws.com
- analyticsengine.s3.amazonaws.com
- analytics.s3.amazonaws.com
- advice-ads.s3.amazonaws.com
- advertising-api-eu.amazon.com
- pagead2.googleadservices.com
- afs.googlesyndication.com
- stats.g.doubleclick.net
- static.doubleclick.net
- m.doubleclick.net
- mediavisor.doubleclick.net
- dmd.metaservices.microsoft.com
- ris.api.iris.microsoft.com
- cp801.prod.do.dsp.mp.microsoft.com
- amd-keyid-8a0578cf56146fea399af903fb5b0ac36eb2786a.microsoftaik.azure.net
- connect.intl.rom.miui.com
- static.ads.brave.com
- 100.0.168.192.in-addr.arpa
- array616.prod.do.dsp.mp.microsoft.com
- td.doubleclick.net
- ip.parrotdns.com
- update.intl.miui.com
- adserwer-ot.9bits.pl
- screentime.comm.miui.com
- ad.afilo.pl.9bits.pl
- global.market.xiaomi.com
- ip-scan-proxy.adspower.net
- api16-normal-useast5.us.tiktokv.com.edgesuite.net
- im-fr-msg-fe-443-2072318483.eu-central-1.elb.amazonaws.com
- cdn.awsde0-fusion.fds.api.mi-img.com
- userlocation.googleapis.com
- domestic.129.159.194.129.0.test.whitechun.lol
- locationhistory-pa.googleapis.com
- semanticlocation-pa.googleapis.com
- tracking.acba.pl
- hasxrp.com
- ads.coingecko.com
- koalicjaobywatelska.pl
- 100konkretow.pl
- platforma.org
- cmdhitter.pl
- telemetry-ingestion.eu-frankfurt-1.oraclecloud.com
+events.hotjar.io
+claritybt.freshmarketer.com
+fwtracks.freshmarketer.com
+tools.mouseflow.com
+cdn-test.mouseflow.com
+mouseflow.com
+realtime.luckyorange.com
+pixel.facebook.com
+an.facebook.com
+2mdn.net
+adsense.google.com
+adservice.google.ae
+adservice.google.ca
+adservice.google.co.id
+adservice.google.co.in
+adservice.google.co.kr
+adservice.google.com
+adservice.google.com.ar
+adservice.google.com.au
+adservice.google.com.br
+adservice.google.com.co
+adservice.google.com.gt
+adservice.google.com.mx
+adservice.google.com.pe
+adservice.google.com.ph
+adservice.google.com.pk
+adservice.google.com.sg
+adservice.google.com.tr
+adservice.google.com.tw
+adservice.google.com.vn
+adservice.google.co.uk
+adservice.google.co.za
+adservice.google.de
+adservice.google.dk
+adservice.google.es
+adservice.google.fr
+adservice.google.it
+adservice.google.nl
+adservice.google.no
+adservice.google.pl
+adservice.google.ru
+adservice.google.vg
+app-measurement.com
+dai.google.com
+doubleclickbygoogle.com
+doubleclick.com
+doubleclick.net
+googleadservices.com
+googlesyndication-cn.com
+googlesyndication.com
+googletagservices.com
+gstaticadssl.l.google.com
+s0-2mdn-net.l.google.com
+aax-eu.amazon.co.uk
+aax-eu.amazon.de
+aax-eu.amazon.es
+aax-eu.amazon.fr
+aax-eu.amazon.in
+aax-eu.amazon.it
+aax-eu.amazon.nl
+aax-eu.amazon.se
+aax-eu-dub.amazon.com
+aax-eu-retail-direct.amazon-adsystem.com
+aax-fe.amazon.com.au
+aax-us-iad.amazon.com
+advertising.a2z.com
+advertising.amazon.dev
+amazon-adsystem.amazon.com
+amazon-adsystem.com
+amazon.dev
+assoc-amazon.ca
+assoc-amazon.com
+assoc-amazon.co.uk
+assoc-amazon.de
+assoc-amazon.fr
+mads.amazon.com
+mads-eu.amazon.com
+rcm.amazon.com
+rcm-ca.amazon.ca
+rcm-de.amazon.de
+rcm-es.amazon.es
+rcm-fr.amazon.fr
+rcm-it.amazon.it
+rcm-uk.amazon.co.uk
+serving-sys.com
+sizmdx.com
+sizmek.com
+tk-adsystem.a2z.com
+video-ads.a2z.com
+activity.windows.com
+ad.xiaomi.com
+game.xiaomi.com
+pdc.micloud.xiaomi.net
+223.202.68.86
+notice.game.xiaomi.com
+app.chat.xiaomi.net
+api.miui.security.xiaomi.com
+api.vip.miui.com
+contactapi.micloud.xiaomi.net
+api.ad.xiaomi.com
+miui.com
+220.181.47.186
+sec-cdn.static.xiaomi.net
+data.mistat.xiaomi.com
+xiaomi.com
+micloud.xiaomi.net
+42.62.94.93
+resolver.gslb.mi-idc.com
+chinaunicom.com
+42.62.94.127
+xiaomi.net
+wifiapi.micloud.xiaomi.net
+42.62.94.152
+114.54.23.44
+120.134.33.89
+sdkconfig.ad.xiaomi.com
+223.202.68.93
+114.54.23.8
+miui.net
+114.54.23.5
+static.pay.baidu.com
+als.baidu.com
+update.miui.com
+tracking.miui.com
+r.browser.miui.com
+tb1.bdstatic.com
+weatherapi.market.xiaomi.com
+test.ad.xiaomi.com
+api.browser.miui.com
+o2o.api.xiaomi.com
+downapp.baidu.com
+ms.vipstatic.com
+a-0001.a-msedge.net
+a-0002.a-msedge.net
+a-0003.a-msedge.net
+a-0004.a-msedge.net
+a-0005.a-msedge.net
+a-0006.a-msedge.net
+a-0007.a-msedge.net
+a-0008.a-msedge.net
+a-0009.a-msedge.net
+a-msedge.net
+a.ads1.msn.com
+a.ads2.msads.net
+a.ads2.msn.com
+a.rad.msn.com
+ac3.msn.com
+ad.doubleclick.net
+adnexus.net
+adnxs.com
+ads.arcct.msn.com
+ads.msn.com
+ads1.msads.net
+ads1.msn.com
+aidps.atdmt.com
+aka-cdn-ns.adtech.de
+api.edgeoffer.microsoft.com
+api.vcservice.webxtsvc-int.microsoft.com
+api.webxtsvc.microsoft.com
+arc.msn.com
+assets.msn.com
+az361816.vo.msecnd.net
+az512334.vo.msecnd.net
+b.ads1.msn.com
+b.ads2.msads.net
+b.rad.msn.com
+browser.events.data.msn.com
+browser.pipe.aria.microsoft.com
+bs.serving-sys.com
+c.atdmt.com
+c.live.com
+c.msn.com
+c1.microsoft.com
+ca.telemetry.microsoft.com
+cache.datamart.windows.com
+cdn.atdmt.com
+cdn.edgeoffer.microsoft.com
+cds26.ams9.msecn.net
+choice.microsoft.com
+choice.microsoft.com.nsatc.net
+choice.microsoft.com.nstac.net
+citrix.onmicrosoft.com
+clarity.ms
+clientfd.family.microsoft.com
+cloudbrowser.microsoft.com
+compatexchange.cloudapp.net
+config.edge.skype.com
+corp.sts.microsoft.com
+corpext.msitadfs.glbdns2.microsoft.com
+crl.microsoft.com
+cs1.wpc.v0cdn.net
+customervoice.microsoft.com
+db3aqu.atdmt.com
+db3wns2011111.wns.windows.com
+df.telemetry.microsoft.com
+diagnostics.support.microsoft.com
+ec.atdmt.com
+edge.cloudbrowser.microsoft.com
+edgeshoppingstatic.azureedge.net
+edgetippingservice.webxtsvc.microsoft.com
+events-sandbox.data.msn.com
+events.data.microsoft.com
+family.api.account.microsoft.com
+farevents.family.microsoft.com
+fe3.delivery.dsp.mp.microsoft.com.nsatc.net
+feedback.microsoft-hohm.com
+feedback.search.microsoft.com
+feedback.smartscreen.microsoft.com
+feedback.windows.com
+flex.msn.com
+forms.microsoft.com
+functional.events.data.microsoft.com
+g.msn.com
+graph.microsoft.com
+h1.msn.com
+i1.services.social.microsoft.com
+i1.services.social.microsoft.com.nsatc.net
+inference.location.live.com
+instrumentExport.cp.microsoft.com
+lb1.www.ms.akadns.net
+live.rads.msn.com
+local.cloudbrowser.microsoft.com
+m.adnxs.com
+m.hotmail.com
+microsoftnews.msn.com
+mobile.events.data.microsoft.com
+msft.sts.microsoft.com
+msftncsi.com
+msntest.serving-sys.com
+mwservice.xpay-int.microsoft.com
+ntp.msn.com
+nw-umwatson.events.data.microsoft.com
+oca.telemetry.microsoft.com
+oca.telemetry.microsoft.com.nsatc.net
+petrol.office.microsoft.com
+pptsgs.officeapps.live.com
+pre.footprintpredict.com
+preview.msn.com
+pricelist.skype.com
+prod.rewardsplatform.microsoft.com
+rad.live.com
+rad.msn.com
+redir.metaservices.microsoft.com
+reports.wes.df.telemetry.microsoft.com
+s.gateway.messenger.live.com
+s0.2mdn.net
+sO.2mdn.net
+schemas.microsoft.akadns.net
+schemas.microsoft.com
+sdx.microsoft.com
+secure.adnxs.com
+secure.flashtalking.com
+self.events.data.microsoft.com
+services.wes.df.telemetry.microsoft.com
+spynet2.microsoft.com
+spynetalt.microsoft.com
+sqm.df.telemetry.microsoft.com
+sqm.telemetry.microsoft.com
+sqm.telemetry.microsoft.com.nsatc.net
+static.2mdn.net
+statsfe1.ws.microsoft.com
+statsfe2.update.microsoft.com.akadns.net
+statsfe2.ws.microsoft.com
+survey.watson.microsoft.com
+telecommand.telemetry.microsoft.com
+telecommand.telemetry.microsoft.com.nsatc.net
+telemetry.appex.bing.net
+telemetry.microsoft.com
+telemetry.urs.microsoft.com
+tip.customervoice.microsoft.com
+tokenization.cp.microsoft.com
+v10.vortex-win.data.microsoft.com
+vcservice.webxtsvc.microsoft.com
+view.atdmt.com
+view.officeapps.live.com
+vortex-bn2.metron.live.com.nsatc.net
+vortex-cy2.metron.live.com.nsatc.net
+vortex-sandbox.data.microsoft.com
+vortex-win.data.metron.live.com.nsatc.net
+vortex-win.data.microsoft.com
+vortex.data.glbdns2.microsoft.com
+vortex.data.microsoft.com
+watson.live.com
+watson.microsoft.com
+watson.ppe.telemetry.microsoft.com
+watson.telemetry.microsoft.com
+watson.telemetry.microsoft.com.nsatc.net
+web.vortex-sandbox.data.msn.com
+web.vortex.data.microsoft.com
+web.vortex.data.msn.com
+webxtsvc.microsoft.com
+wes.df.telemetry.microsoft.com
+cs.dds.microsoft.com
+anonymous.ads.brave.com
+personalization.services.msn.com
+checkappexec.microsoft.com
+array609.prod.do.dsp.mp.microsoft.com
+logs1406.xiti.com
+array608.prod.do.dsp.mp.microsoft.com
+fr-app-chat-global-xiaomi-net-6-2041664722.eu-central-1.elb.amazonaws.com
+mqtt-mini.facebook.com
+pro.webstat.pl
+ponghive.org
+array803.prod.do.dsp.mp.microsoft.com
+array811.prod.do.dsp.mp.microsoft.com
+array804.prod.do.dsp.mp.microsoft.com
+tsfe.trafficshaping.dsp.mp.microsoft.com
+41fdd1e9c4e667843454b1529e6835ff.azr.footprintdns.com
+wac-ring.msedge.net
+devicemetadataservice.trafficmanager.net
+2.53.2.10.in-addr.arpa
+array812.prod.do.dsp.mp.microsoft.com
+array802.prod.do.dsp.mp.microsoft.com
+array806.prod.do.dsp.mp.microsoft.com
+array808.prod.do.dsp.mp.microsoft.com
+array505.prod.do.dsp.mp.microsoft.com
+array509.prod.do.dsp.mp.microsoft.com
+array518.prod.do.dsp.mp.microsoft.com
+disc501.prod.do.dsp.mp.microsoft.com
+geo.prod.do.dsp.mp.microsoft.com
+geover.prod.do.dsp.mp.microsoft.com
+kv501.prod.do.dsp.mp.microsoft.com
+settings-win.data.microsoft.com
+cp501.prod.do.dsp.mp.microsoft.com
+disc601.prod.do.dsp.mp.microsoft.com
+default.exp-tas.com
+106.0.168.192.in-addr.arpa
+array606.prod.do.dsp.mp.microsoft.com
+epdg.epc.mnc003.mcc260.pub.3gppnetwork.org
+array613.prod.do.dsp.mp.microsoft.com
+cp601.prod.do.dsp.mp.microsoft.com
+kv601.prod.do.dsp.mp.microsoft.com
+array604.prod.do.dsp.mp.microsoft.com
+105.0.168.192.in-addr.arpa
+fr-app-chat-global-xiaomi-net-7-1441165053.eu-central-1.elb.amazonaws.com
+fr-app-chat-global-xiaomi-net-5-1350631744.eu-central-1.elb.amazonaws.com
+fr-app-chat-global-xiaomi-net4-368828178.eu-central-1.elb.amazonaws.com
+132.0.168.192.in-addr.arpa
+fr-app-chat-global-xiaomi-net-1516654448.eu-central-1.elb.amazonaws.com
+fr-app-chat-global-xiaomi-net-8-491629200.eu-central-1.elb.amazonaws.com
+fr.resolver.msg.global.xiaomi.net
+102.0.168.192.in-addr.arpa
+2.tlu.dl.delivery.mp.microsoft.com
+223.0.168.192.in-addr.arpa
+4.tlu.dl.delivery.mp.microsoft.com
+fr-app-chat-global-xiaomi-net-3-1830982956.eu-central-1.elb.amazonaws.com
+fr-app-chat-global-xiaomi-net2-2117517874.eu-central-1.elb.amazonaws.com
+fp-afd.azureedge.net
+array805.prod.do.dsp.mp.microsoft.com
+kv801.prod.do.dsp.mp.microsoft.com
+disc801.prod.do.dsp.mp.microsoft.com
+2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.5.2.0.0.1.c.f.ip6.arpa
+geo.ads.brave.com
+api-analytics-de.zepp.com
+fr-resolver-msg-global-xiaomi-n-916220403.eu-central-1.elb.amazonaws.com
+fr.app.chat.global.xiaomi.net
+fr-im-fe-823642335.eu-central-1.elb.amazonaws.com
+206.0.168.192.in-addr.arpa
+109.0.168.192.in-addr.arpa
+fd.api.iris.microsoft.com
+widget.intercom.io
+fp2e7a.wpc.phicdn.net
+static.criteo.net
+pagead2.googlesyndication.com
+pixel6.wp.pl
+pixel.wp.pl
+stats.wp.com
+advertising.apple.com
+iadsdk.apple.com
+metrics.icloud.com
+metrics.mzstatic.com
+api-adservices.apple.com
+books-analytics-events.apple.com
+weather-analytics-events.apple.com
+notes-analytics-events.apple.com
+samsungads.com
+smetrics.samsung.com
+nmetrics.samsung.com
+samsung-com.112.2o7.net
+analytics-api.samsunghealthcn.com
+metrics.data.hicloud.com
+metrics2.data.hicloud.com
+grs.hicloud.com
+logservice.hicloud.com
+logservice1.hicloud.com
+logbak.hicloud.com
+adsfs.oppomobile.com
+adx.ads.oppomobile.com
+ck.ads.oppomobile.com
+data.ads.oppomobile.com
+data.mistat.india.xiaomi.com
+data.mistat.rus.xiaomi.com
+sdkconfig.ad.intl.xiaomi.com
+tracking.rus.miui.com
+iot-eu-logser.realme.com
+iot-logser.realme.com
+bdapi-ads.realmemobile.com
+bdapi-in-ads.realmemobile.com
+ads.youtube.com
+events.reddit.com
+events.redditmedia.com
+analytics.google.com
+click.googleanalytics.com
+google-analytics.com
+ssl.google-analytics.com
+adtago.s3.amazonaws.com
+analyticsengine.s3.amazonaws.com
+analytics.s3.amazonaws.com
+advice-ads.s3.amazonaws.com
+advertising-api-eu.amazon.com
+pagead2.googleadservices.com
+afs.googlesyndication.com
+stats.g.doubleclick.net
+static.doubleclick.net
+m.doubleclick.net
+mediavisor.doubleclick.net
+dmd.metaservices.microsoft.com
+ris.api.iris.microsoft.com
+cp801.prod.do.dsp.mp.microsoft.com
+amd-keyid-8a0578cf56146fea399af903fb5b0ac36eb2786a.microsoftaik.azure.net
+connect.intl.rom.miui.com
+static.ads.brave.com
+100.0.168.192.in-addr.arpa
+array616.prod.do.dsp.mp.microsoft.com
+td.doubleclick.net
+ip.parrotdns.com
+update.intl.miui.com
+adserwer-ot.9bits.pl
+screentime.comm.miui.com
+ad.afilo.pl.9bits.pl
+global.market.xiaomi.com
+ip-scan-proxy.adspower.net
+api16-normal-useast5.us.tiktokv.com.edgesuite.net
+im-fr-msg-fe-443-2072318483.eu-central-1.elb.amazonaws.com
+cdn.awsde0-fusion.fds.api.mi-img.com
+userlocation.googleapis.com
+domestic.129.159.194.129.0.test.whitechun.lol
+locationhistory-pa.googleapis.com
+semanticlocation-pa.googleapis.com
+tracking.acba.pl
+hasxrp.com
+ads.coingecko.com
+koalicjaobywatelska.pl
+100konkretow.pl
+platforma.org
+cmdhitter.pl
+telemetry-ingestion.eu-frankfurt-1.oraclecloud.com
