@@ -212,8 +212,10 @@ function isDomainOrIP(line) {
 }
 
 function cleanDomain(line) {
+  if (!line) return '';
   return line.replace(/^https?:\/\/(www\.)?/, '').split('/')[0].trim();
 }
+
 
 async function getData(url) {
   try {
@@ -241,6 +243,8 @@ function filterDomains(data, whitelist) {
   let lines = data.split('\n');
 
   lines.forEach(line => {
+    if (!line) return;
+
     line = line.trim();
 
     if (line.startsWith('#') || line.length === 0) return;
