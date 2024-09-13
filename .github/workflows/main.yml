@@ -35,4 +35,4 @@ jobs:
         git config --local user.name "Security Guy"
         git add hosts
         git commit -m "Generate hosts"
-        git push origin main
+        git push
