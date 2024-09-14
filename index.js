@@ -227,7 +227,7 @@ function isInvalidContent(data) {
     return true;
   }
 
-  if (data.includes('404') || data.includes('403') || data.toLowerCase().includes('not found')) {
+  if (data.toLowerCase().includes('not found')) {
     return true;
   }
 
@@ -255,7 +255,7 @@ function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
 
-  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
+  line = line.replace(/^https?:\/\//, '').replace(/^http?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
 
   line = line.split('/')[0].trim();
 
