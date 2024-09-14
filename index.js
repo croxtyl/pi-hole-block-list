@@ -248,34 +248,20 @@ function cleanLine(line) {
   return line;
 }
 
-function filterDomains(content) {
-  let uniqueLines = new Set();
-  const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
-
-  content.split('\n').forEach((line) => {
-    line = cleanLine(line);
-
-    if (line && !forbiddenChars.test(line)) {
-      uniqueLines.add(line);
-    }
-  });
-
-  return [...uniqueLines].join('\n');
-}
-
 async function getWhitelist() {
   let data = await getData(whitelistUrl);
   if (data === null) {
     console.error('Failed to fetch whitelist; it will be empty.');
     data = '';
   }
-  data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
-  return new Set(data.map(line => line.toLowerCase().replace(/\.$/, '')));
+  return new Set(data.trim().split('\n').map(line => cleanLine(line).toLowerCase().replace(/\.$/, '')));
 }
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
   let totalEntries = 0;
+  let totalRemoved = 0;
+  let totalConverted = 0;
 
   for (let fileSet of sourceFiles) {
     let content = '';
@@ -291,27 +277,33 @@ async function updateFilesAndCommit() {
       }
     }
 
-    let filteredContent = filterDomains(content);
-    let finalContent = filteredContent
-      .split('\n')
-      .filter(line => {
-        const normalizedLine = line.toLowerCase().replace(/\.$/, '');
-        if (normalizedLine && !whitelist.has(normalizedLine)) {
-          return true;
-        } else if (normalizedLine) {
-          console.log(`Line removed (whitelisted): ${line}`);
-        }
-        return false;
-      })
-      .join('\n') + '\n';
+    let lines = content.split('\n');
+    let filteredLines = [];
+    let removedLines = new Set();
 
+    lines.forEach(line => {
+      let cleanedLine = cleanLine(line);
+      if (cleanedLine && !whitelist.has(cleanedLine.toLowerCase().replace(/\.$/, ''))) {
+        if (cleanedLine) {
+          filteredLines.push(cleanedLine);
+          totalConverted++;
+        }
+      } else if (cleanedLine) {
+        removedLines.add(cleanedLine);
+        totalRemoved++;
+      }
+    });
+
+    let finalContent = filteredLines.join('\n') + '\n';
     fs.writeFileSync(fileSet.target, finalContent);
     console.log('Created hosts file ' + fileSet.target);
-    console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length - 1}`);
-    totalEntries += finalContent.split('\n').length - 1;
+    console.log(`Total entries for ${fileSet.target}: ${filteredLines.length}`);
+    totalEntries += filteredLines.length;
   }
 
   console.log(`Total queries from all files: ${totalEntries}`);
+  console.log(`Total lines removed: ${totalRemoved}`);
+  console.log(`Total lines converted: ${totalConverted}`);
 }
 
 updateFilesAndCommit();
