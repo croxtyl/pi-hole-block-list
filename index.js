@@ -338,5 +338,5 @@ async function updateFilesAndCommit() {
     console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length}`);
   }
 }
-
+}
 updateFilesAndCommit();
