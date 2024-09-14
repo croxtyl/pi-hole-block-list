@@ -279,7 +279,7 @@ function filterDomains(content) {
     } else if (forbiddenChars.test(line)) {
       console.log(`Line removed (forbidden characters): ${line}`);
     } else {
-      uniqueLines.add(line);
+      uniqueLines.add(normalizeLine(line));
     }
   });
 
@@ -293,13 +293,16 @@ async function getWhitelist() {
     data = '';
   }
   data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
-  return new Set(data);
+  return new Set(data.map(normalizeLine));
+}
+
+function normalizeLine(line) {
+  return line.toLowerCase().replace(/\.$/, '');
 }
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
   let totalEntries = 0;
-
   for (let fileSet of sourceFiles) {
     let content = '';
     for (let source of fileSet.urls) {
@@ -322,26 +325,23 @@ async function updateFilesAndCommit() {
     let finalContent = filteredContent
       .split('\n')
       .filter(line => {
-        if (!line) return false;
-
-        if (whitelist.has(line)) {
+        const normalizedLine = normalizeLine(line);
+        if (normalizedLine && !whitelist.has(normalizedLine)) {
+          return true;
+        } else if (normalizedLine) {
           console.log(`Line removed (whitelisted): ${line}`);
-          return false;
         }
-        return true;
+        return false;
       })
       .join('\n') + '\n';
 
     fs.writeFileSync(fileSet.target, finalContent);
-    
     console.log('Created hosts file ' + fileSet.target);
-    const fileEntries = finalContent.split('\n').length;
-    console.log(`Total entries for ${fileSet.target}: ${fileEntries}`);
-    
-    totalEntries += fileEntries;
+    console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length - 1}`);
+    totalEntries += finalContent.split('\n').length - 1;
   }
 
-  console.log('Total number of entries across all files: ' + totalEntries);
+  console.log(`Total queries from all files: ${totalEntries}`);
 }
 
 updateFilesAndCommit();
