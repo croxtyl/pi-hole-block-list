@@ -238,9 +238,11 @@ function isInvalidContent(data) {
   return false;
 }
 
-function readLocalBackup(filePath) {
+function readLocalBackup(filePath, reason) {
   try {
-    return fs.readFileSync(filePath, 'utf8');
+    const data = fs.readFileSync(filePath, 'utf8');
+    console.log('Using backup for ' + filePath + ': ' + reason);
+    return data;
   } catch (err) {
     console.error('Error reading local backup file ' + filePath + ': ' + err.message);
     return '';
@@ -292,15 +294,19 @@ async function getWhitelist() {
 
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
+  let totalEntries = 0;
 
   for (let fileSet of sourceFiles) {
     let content = '';
     for (let source of fileSet.urls) {
       let data = await getData(source.url);
 
-      if (data === null || isInvalidContent(data)) {
-        console.error('Using backup for ' + source.url);
-        data = readLocalBackup(source.backup);
+      if (data === null) {
+        console.error('Error fetching ' + source.url);
+        data = readLocalBackup(source.backup, 'Request failed');
+      } else if (isInvalidContent(data)) {
+        console.error('Invalid content from ' + source.url);
+        data = readLocalBackup(source.backup, 'Invalid content');
       }
 
       if (data) {
@@ -311,11 +317,17 @@ async function updateFilesAndCommit() {
     let filteredContent = filterDomains(content);
 
     let finalContent = filteredContent.split('\n').filter(line => line && !whitelist.has(line)).join('\n') + '\n';
-
+    
     fs.writeFileSync(fileSet.target, finalContent);
+    
     console.log('Created hosts file ' + fileSet.target);
-    console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length}`);
+    const fileEntries = finalContent.split('\n').length;
+    console.log(`Total entries for ${fileSet.target}: ${fileEntries}`);
+    
+    totalEntries += fileEntries;
   }
+
+  console.log('Total number of entries across all files: ' + totalEntries);
 }
 
 updateFilesAndCommit();
