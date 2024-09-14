@@ -212,31 +212,15 @@ async function getData(url) {
     const response = await axios.get(url, {
       headers: { 'User-Agent': userAgent }
     });
+    if (response.status === 404) {
+      console.error('404 Not Found for ' + url);
+      return null;
+    }
     return response.data;
   } catch (err) {
     console.error('Error fetching ' + url + ': ' + err.message);
     return null;
   }
-}
-
-function isInvalidContent(data) {
-  const htmlIndicators = ['<html>', '</html>', '<body>', '<head>', '<title>', '<p>', '<h1>'];
-  for (const tag of htmlIndicators) {
-    if (data.includes(tag)) {
-      return true;
-    }
-  }
-
-  const trimmedData = data.trim();
-  if (trimmedData.startsWith('{') || trimmedData.startsWith('[')) {
-    return true;
-  }
-
-  if (data.includes('404 not found') || data.includes('521 server error') || data.toLowerCase().includes('not found')) {
-    return true;
-  }
-
-  return false;
 }
 
 function readLocalBackup(filePath, reason) {
@@ -256,9 +240,8 @@ function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
 
-  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
-  line = line.split('/')[0].trim();
-  line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
+  line = line.replace(/^https?:\/\//, '').replace(/^http?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
+
   line = line.split('#')[0].trim();
   line = line.split('!')[0].trim();
 
@@ -271,36 +254,15 @@ function cleanLine(line) {
 
 function filterDomains(content) {
   let uniqueLines = new Set();
-  let removedLines = 0;
-  let convertedLines = 0;
   const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
 
   content.split('\n').forEach((line) => {
-    const originalLine = line;
     line = cleanLine(line);
 
-    if (!line) {
-      if (logDetailed) {
-        console.log(`Line removed (empty or comment): ${originalLine}`);
-      }
-      removedLines++;
-    } else if (forbiddenChars.test(line)) {
-      if (logDetailed) {
-        console.log(`Line removed (forbidden characters): ${line}`);
-      }
-      removedLines++;
-    } else if (line !== originalLine) {
-      convertedLines++;
-      uniqueLines.add(line);
-    } else {
+    if (line && !forbiddenChars.test(line)) {
       uniqueLines.add(line);
     }
   });
-
-  if (logDetailed) {
-    console.log(`Total lines removed: ${removedLines}`);
-    console.log(`Total lines converted: ${convertedLines}`);
-  }
 
   return [...uniqueLines].join('\n');
 }
@@ -322,8 +284,6 @@ function normalizeLine(line) {
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
   let totalEntries = 0;
-  let totalRemovedLines = 0;
-  let totalConvertedLines = 0;
 
   for (let fileSet of sourceFiles) {
     let content = '';
@@ -331,11 +291,7 @@ async function updateFilesAndCommit() {
       let data = await getData(source.url);
 
       if (data === null) {
-        console.error('Error fetching ' + source.url);
-        data = readLocalBackup(source.backup, 'Request failed');
-      } else if (isInvalidContent(data)) {
-        console.error('Invalid content from ' + source.url);
-        data = readLocalBackup(source.backup, 'Invalid content');
+        data = readLocalBackup(source.backup, '404 Not Found');
       }
 
       if (data) {
@@ -363,14 +319,9 @@ async function updateFilesAndCommit() {
     console.log('Created hosts file ' + fileSet.target);
     console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length - 1}`);
     totalEntries += finalContent.split('\n').length - 1;
-
-    totalRemovedLines += filteredContent.split('\n').length - finalContent.split('\n').length;
-    totalConvertedLines += filteredContent.split('\n').length - filteredContent.split('\n').filter(line => line.trim() === '').length;
   }
 
   console.log(`Total queries from all files: ${totalEntries}`);
-  console.log(`Total lines removed: ${totalRemovedLines}`);
-  console.log(`Total lines converted: ${totalConvertedLines}`);
 }
 
 updateFilesAndCommit();
