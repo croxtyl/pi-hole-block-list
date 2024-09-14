@@ -360,6 +360,7 @@
 0.0.0.0 fd.api.iris.microsoft.com
 0.0.0.0 widget.intercom.io
 0.0.0.0 fp2e7a.wpc.phicdn.net
+0.0.0.0 s0.2mdn.net
 0.0.0.0 static.criteo.net
 0.0.0.0 pagead2.googlesyndication.com
 0.0.0.0 pixel6.wp.pl
@@ -388,8 +389,11 @@
 0.0.0.0 adx.ads.oppomobile.com
 0.0.0.0 ck.ads.oppomobile.com
 0.0.0.0 data.ads.oppomobile.com
+0.0.0.0 api.ad.xiaomi.com
+0.0.0.0 data.mistat.xiaomi.com
 0.0.0.0 data.mistat.india.xiaomi.com
 0.0.0.0 data.mistat.rus.xiaomi.com
+0.0.0.0 sdkconfig.ad.xiaomi.com
 0.0.0.0 sdkconfig.ad.intl.xiaomi.com
 0.0.0.0 tracking.rus.miui.com
 0.0.0.0 iot-eu-logser.realme.com
@@ -408,9 +412,12 @@
 0.0.0.0 analytics.s3.amazonaws.com
 0.0.0.0 advice-ads.s3.amazonaws.com
 0.0.0.0 advertising-api-eu.amazon.com
+0.0.0.0 pagead2.googlesyndication.com
+0.0.0.0 adservice.google.com
 0.0.0.0 pagead2.googleadservices.com
 0.0.0.0 afs.googlesyndication.com
 0.0.0.0 stats.g.doubleclick.net
+0.0.0.0 ad.doubleclick.net
 0.0.0.0 static.doubleclick.net
 0.0.0.0 m.doubleclick.net
 0.0.0.0 mediavisor.doubleclick.net
