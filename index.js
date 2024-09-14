@@ -202,8 +202,8 @@ const sourceFiles = [
     target: path.join('hosts', 'other.txt')
   },
 ];
-const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
 async function getData(url) {
@@ -249,6 +249,49 @@ function readLocalBackup(filePath) {
     console.error('Error reading local backup file ' + filePath + ': ' + err.message);
     return '';
   }
+}
+
+function cleanLine(line) {
+  if (!line) return '';
+  line = line.trim();
+
+  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
+
+  line = line.split('/')[0].trim();
+
+  line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
+  line = line.split('#')[0].trim();
+  line = line.split('!')[0].trim();
+
+  if (line.startsWith('#') || line.startsWith('!') || line === '') {
+    return '';
+  }
+
+  return line;
+}
+
+function filterDomains(content) {
+  let uniqueLines = new Set();
+  const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
+
+  content.split('\n').forEach((line) => {
+    line = cleanLine(line);
+    if (line && !forbiddenChars.test(line)) {
+      uniqueLines.add(line);
+    }
+  });
+
+  return [...uniqueLines].join('\n');
+}
+
+async function getWhitelist() {
+  let data = await getData(whitelistUrl);
+  if (data === null) {
+    console.error('Failed to fetch whitelist; it will be empty.');
+    data = '';
+  }
+  data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
+  return new Set(data);
 }
 
 async function updateFilesAndCommit() {
