@@ -218,6 +218,30 @@ async function getData(url) {
   }
 }
 
+function isInvalidContent(data) {
+  if (data.includes('<html>') || data.includes('</html>') || data.includes('<body>') || data.includes('<head>') || data.includes('<title>') || data.includes('<p>') || data.includes('<h1>')) {
+    return true;
+  }
+
+  if (data.trim().startsWith('{') || data.trim().startsWith('[')) {
+    return true;
+  }
+
+  if (data.includes('404') || data.includes('403') || data.toLowerCase().includes('not found')) {
+    return true;
+  }
+
+  const lines = data.split('\n');
+  for (const line of lines) {
+    const wordCount = line.trim().split(/\s+/).length;
+    if (wordCount > 3) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function readLocalBackup(filePath) {
   try {
     return fs.readFileSync(filePath, 'utf8');
@@ -227,67 +251,19 @@ function readLocalBackup(filePath) {
   }
 }
 
-function cleanLine(line) {
-  if (!line) return '';
-  line = line.trim();
-
-  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
-
-  line = line.split('/')[0].trim();
-
-  line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
-
-  line = line.split('#')[0].trim();
-  line = line.split('!')[0].trim();
-
-  if (line.startsWith('#') || line.startsWith('!') || line === '') {
-    return '';
-  }
-
-//  if (line.startsWith('0.0.0.0') || line.startsWith('127.0.0.1')) {
-//   line = line.split(' ')[1] || '';
-//  }
-
-  return line;
-}
-
-function filterDomains(content) {
-  let uniqueLines = new Set();
-  
-  const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
-
-  content.split('\n').forEach((line) => {
-    line = cleanLine(line);
-
-    if (line && !forbiddenChars.test(line)) {
-      uniqueLines.add(line);
-    }
-  });
-
-  return [...uniqueLines].join('\n');
-}
-
-
-async function getWhitelist() {
-  let data = await getData(whitelistUrl);
-  if (data === null) {
-    console.error('Failed to fetch whitelist; it will be empty.');
-    data = '';
-  }
-  data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
-  return new Set(data);
-}
-
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
+
   for (let fileSet of sourceFiles) {
     let content = '';
     for (let source of fileSet.urls) {
       let data = await getData(source.url);
-      if (data === null) {
+
+      if (data === null || isInvalidContent(data)) {
         console.error('Using backup for ' + source.url);
         data = readLocalBackup(source.backup);
       }
+
       if (data) {
         content += data + '\n';
       }
