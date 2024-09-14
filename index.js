@@ -218,29 +218,46 @@ async function getData(url) {
   }
 }
 
+//function isInvalidContent(data) {
+//  if (data.includes('<html>') || data.includes('</html>') || data.includes('<body>') || data.includes('<head>') || data.includes('<title>') || data.includes('<p>') || data.includes('<h1>')) {
+//    return true;
+//  }
+
+//  if (data.trim().startsWith('{') || data.trim().startsWith('[')) {
+//    return true;
+//  }
+
+//  if (data.toLowerCase().includes('not found')) {
+//    return true;
+//  }
+
+//  const lines = data.split('\n');
+//  for (const line of lines) {
+//    const wordCount = line.trim().split(/\s+/).length;
+//    if (wordCount > 3) {
+//      return true;
+//    }
+// }
+
+//  return false;
+//}
+
 function isInvalidContent(data) {
-  if (data.includes('<html>') || data.includes('</html>') || data.includes('<body>') || data.includes('<head>') || data.includes('<title>') || data.includes('<p>') || data.includes('<h1>')) {
-    return true;
-  }
-
-  if (data.trim().startsWith('{') || data.trim().startsWith('[')) {
-    return true;
-  }
-
-  if (data.toLowerCase().includes('not found')) {
-    return true;
-  }
-
-  const lines = data.split('\n');
-  for (const line of lines) {
-    const wordCount = line.trim().split(/\s+/).length;
-    if (wordCount > 3) {
+  const htmlIndicators = ['<html>', '</html>', '<body>', '<head>', '<title>', '<p>', '<h1>'];
+  for (const tag of htmlIndicators) {
+    if (data.includes(tag)) {
       return true;
     }
   }
 
-  return false;
-}
+  const trimmedData = data.trim();
+  if (trimmedData.startsWith('{') || trimmedData.startsWith('[')) {
+    return true;
+  }
+
+  if (data.includes('404 not found') || data.includes('521 server error') || data.toLowerCase().includes('not found')) {
+    return true;
+  }
 
 function readLocalBackup(filePath) {
   try {
