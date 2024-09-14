@@ -205,6 +205,7 @@ const sourceFiles = [
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
+const logDetailed = false;
 
 async function getData(url) {
   try {
@@ -241,7 +242,9 @@ function isInvalidContent(data) {
 function readLocalBackup(filePath, reason) {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
-    console.log('Using backup for ' + filePath + ': ' + reason);
+    if (logDetailed) {
+      console.log('Using backup for ' + filePath + ': ' + reason);
+    }
     return data;
   } catch (err) {
     console.error('Error reading local backup file ' + filePath + ': ' + err.message);
@@ -268,6 +271,8 @@ function cleanLine(line) {
 
 function filterDomains(content) {
   let uniqueLines = new Set();
+  let removedLines = 0;
+  let convertedLines = 0;
   const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
 
   content.split('\n').forEach((line) => {
@@ -275,13 +280,27 @@ function filterDomains(content) {
     line = cleanLine(line);
 
     if (!line) {
-      console.log(`Line removed (empty or comment): ${originalLine}`);
+      if (logDetailed) {
+        console.log(`Line removed (empty or comment): ${originalLine}`);
+      }
+      removedLines++;
     } else if (forbiddenChars.test(line)) {
-      console.log(`Line removed (forbidden characters): ${line}`);
+      if (logDetailed) {
+        console.log(`Line removed (forbidden characters): ${line}`);
+      }
+      removedLines++;
+    } else if (line !== originalLine) {
+      convertedLines++;
+      uniqueLines.add(line);
     } else {
-      uniqueLines.add(normalizeLine(line));
+      uniqueLines.add(line);
     }
   });
+
+  if (logDetailed) {
+    console.log(`Total lines removed: ${removedLines}`);
+    console.log(`Total lines converted: ${convertedLines}`);
+  }
 
   return [...uniqueLines].join('\n');
 }
@@ -303,6 +322,9 @@ function normalizeLine(line) {
 async function updateFilesAndCommit() {
   let whitelist = await getWhitelist();
   let totalEntries = 0;
+  let totalRemovedLines = 0;
+  let totalConvertedLines = 0;
+
   for (let fileSet of sourceFiles) {
     let content = '';
     for (let source of fileSet.urls) {
@@ -329,7 +351,9 @@ async function updateFilesAndCommit() {
         if (normalizedLine && !whitelist.has(normalizedLine)) {
           return true;
         } else if (normalizedLine) {
-          console.log(`Line removed (whitelisted): ${line}`);
+          if (logDetailed) {
+            console.log(`Line removed (whitelisted): ${line}`);
+          }
         }
         return false;
       })
@@ -339,9 +363,14 @@ async function updateFilesAndCommit() {
     console.log('Created hosts file ' + fileSet.target);
     console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length - 1}`);
     totalEntries += finalContent.split('\n').length - 1;
+
+    totalRemovedLines += filteredContent.split('\n').length - finalContent.split('\n').length;
+    totalConvertedLines += filteredContent.split('\n').length - filteredContent.split('\n').filter(line => line.trim() === '').length;
   }
 
   console.log(`Total queries from all files: ${totalEntries}`);
+  console.log(`Total lines removed: ${totalRemovedLines}`);
+  console.log(`Total lines converted: ${totalConvertedLines}`);
 }
 
 updateFilesAndCommit();
