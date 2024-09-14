@@ -205,15 +205,13 @@ const sourceFiles = [
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
-const logDetailed = false;
-
 async function getData(url) {
   try {
     const response = await axios.get(url, {
       headers: { 'User-Agent': userAgent }
     });
-    if (response.status === 404) {
-      console.error('404 Not Found for ' + url);
+    if (response.status === 404 || response.status === 403 || response.status === 521) {
+      console.error(`Error ${response.status} for ${url}`);
       return null;
     }
     return response.data;
@@ -245,6 +243,10 @@ function cleanLine(line) {
     return '';
   }
 
+  if (line.startsWith('0.0.0.0 ') || line.startsWith('127.0.0.1 ')) {
+    return line.split(' ').slice(1).join(' ').trim();
+  }
+
   return line;
 }
 
@@ -269,7 +271,7 @@ async function updateFilesAndCommit() {
       let data = await getData(source.url);
 
       if (data === null) {
-        data = readLocalBackup(source.backup, '404 Not Found');
+        data = readLocalBackup(source.backup, 'Error fetching data');
       }
 
       if (data) {
