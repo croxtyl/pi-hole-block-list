@@ -216,7 +216,7 @@
 0.0.0.0 i1.services.social.microsoft.com
 0.0.0.0 i1.services.social.microsoft.com.nsatc.net
 0.0.0.0 inference.location.live.com
-0.0.0.0 instrumentExport.cp.microsoft.com
+0.0.0.0 instrumentexport.cp.microsoft.com
 0.0.0.0 lb1.www.ms.akadns.net
 0.0.0.0 live.rads.msn.com
 0.0.0.0 local.cloudbrowser.microsoft.com
@@ -244,7 +244,7 @@
 0.0.0.0 reports.wes.df.telemetry.microsoft.com
 0.0.0.0 s.gateway.messenger.live.com
 0.0.0.0 s0.2mdn.net
-0.0.0.0 sO.2mdn.net
+0.0.0.0 so.2mdn.net
 0.0.0.0 schemas.microsoft.akadns.net
 0.0.0.0 schemas.microsoft.com
 0.0.0.0 sdx.microsoft.com
