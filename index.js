@@ -226,9 +226,7 @@ async function getData(url) {
 function readLocalBackup(filePath, reason) {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
-    if (logDetailed) {
-      console.log('Using backup for ' + filePath + ': ' + reason);
-    }
+    console.log('Using backup for ' + filePath + ': ' + reason);
     return data;
   } catch (err) {
     console.error('Error reading local backup file ' + filePath + ': ' + err.message);
@@ -239,8 +237,6 @@ function readLocalBackup(filePath, reason) {
 function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
-
-  line = line.replace(/^https?:\/\//, '').replace(/^http?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
 
   line = line.split('#')[0].trim();
   line = line.split('!')[0].trim();
@@ -274,11 +270,7 @@ async function getWhitelist() {
     data = '';
   }
   data = data.trim().split('\n').map(line => cleanLine(line)).filter(line => line !== '');
-  return new Set(data.map(normalizeLine));
-}
-
-function normalizeLine(line) {
-  return line.toLowerCase().replace(/\.$/, '');
+  return new Set(data.map(line => line.toLowerCase().replace(/\.$/, '')));
 }
 
 async function updateFilesAndCommit() {
@@ -303,13 +295,11 @@ async function updateFilesAndCommit() {
     let finalContent = filteredContent
       .split('\n')
       .filter(line => {
-        const normalizedLine = normalizeLine(line);
+        const normalizedLine = line.toLowerCase().replace(/\.$/, '');
         if (normalizedLine && !whitelist.has(normalizedLine)) {
           return true;
         } else if (normalizedLine) {
-          if (logDetailed) {
-            console.log(`Line removed (whitelisted): ${line}`);
-          }
+          console.log(`Line removed (whitelisted): ${line}`);
         }
         return false;
       })
