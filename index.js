@@ -254,9 +254,7 @@ function cleanLine(line) {
   line = line.trim();
 
   line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
-
   line = line.split('/')[0].trim();
-
   line = line.replace(/[{}<>;=+|^\\]/g, '').trim();
   line = line.split('#')[0].trim();
   line = line.split('!')[0].trim();
@@ -273,8 +271,14 @@ function filterDomains(content) {
   const forbiddenChars = /[\\|[\]{};"'<>()*^=+]/;
 
   content.split('\n').forEach((line) => {
+    const originalLine = line;
     line = cleanLine(line);
-    if (line && !forbiddenChars.test(line)) {
+
+    if (!line) {
+      console.log(`Line removed (empty or comment): ${originalLine}`);
+    } else if (forbiddenChars.test(line)) {
+      console.log(`Line removed (forbidden characters): ${line}`);
+    } else {
       uniqueLines.add(line);
     }
   });
@@ -315,9 +319,19 @@ async function updateFilesAndCommit() {
     }
 
     let filteredContent = filterDomains(content);
+    let finalContent = filteredContent
+      .split('\n')
+      .filter(line => {
+        if (!line) return false;
 
-    let finalContent = filteredContent.split('\n').filter(line => line && !whitelist.has(line)).join('\n') + '\n';
-    
+        if (whitelist.has(line)) {
+          console.log(`Line removed (whitelisted): ${line}`);
+          return false;
+        }
+        return true;
+      })
+      .join('\n') + '\n';
+
     fs.writeFileSync(fileSet.target, finalContent);
     
     console.log('Created hosts file ' + fileSet.target);
