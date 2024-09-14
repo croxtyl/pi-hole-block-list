@@ -218,30 +218,6 @@ async function getData(url) {
   }
 }
 
-//function isInvalidContent(data) {
-//  if (data.includes('<html>') || data.includes('</html>') || data.includes('<body>') || data.includes('<head>') || data.includes('<title>') || data.includes('<p>') || data.includes('<h1>')) {
-//    return true;
-//  }
-
-//  if (data.trim().startsWith('{') || data.trim().startsWith('[')) {
-//    return true;
-//  }
-
-//  if (data.toLowerCase().includes('not found')) {
-//    return true;
-//  }
-
-//  const lines = data.split('\n');
-//  for (const line of lines) {
-//    const wordCount = line.trim().split(/\s+/).length;
-//    if (wordCount > 3) {
-//      return true;
-//    }
-// }
-
-//  return false;
-//}
-
 function isInvalidContent(data) {
   const htmlIndicators = ['<html>', '</html>', '<body>', '<head>', '<title>', '<p>', '<h1>'];
   for (const tag of htmlIndicators) {
@@ -259,6 +235,9 @@ function isInvalidContent(data) {
     return true;
   }
 
+  return false;
+}
+
 function readLocalBackup(filePath) {
   try {
     return fs.readFileSync(filePath, 'utf8');
@@ -272,7 +251,7 @@ function cleanLine(line) {
   if (!line) return '';
   line = line.trim();
 
-  line = line.replace(/^https?:\/\//, '').replace(/^http?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
+  line = line.replace(/^https?:\/\//, '').replace(/^\|\|/, '').replace(/\^$/, '');
 
   line = line.split('/')[0].trim();
 
@@ -338,5 +317,5 @@ async function updateFilesAndCommit() {
     console.log(`Total entries for ${fileSet.target}: ${finalContent.split('\n').length}`);
   }
 }
-}
+
 updateFilesAndCommit();
