@@ -300,6 +300,7 @@ array608.prod.do.dsp.mp.microsoft.com
 fr-app-chat-global-xiaomi-net-6-2041664722.eu-central-1.elb.amazonaws.com
 mqtt-mini.facebook.com
 pro.webstat.pl
+webstat.pl
 ponghive.org
 array803.prod.do.dsp.mp.microsoft.com
 array811.prod.do.dsp.mp.microsoft.com
@@ -435,6 +436,7 @@ update.intl.miui.com
 adserwer-ot.9bits.pl
 screentime.comm.miui.com
 ad.afilo.pl.9bits.pl
+ad.afilo.pl
 global.market.xiaomi.com
 ip-scan-proxy.adspower.net
 api16-normal-useast5.us.tiktokv.com.edgesuite.net
