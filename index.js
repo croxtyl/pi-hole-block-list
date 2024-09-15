@@ -24,7 +24,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/bongochong/CombinedPrivacyBlockLists/master/newhosts-final.hosts', backup: 'hosts-backup/ads/17.txt' },
         { url: 'https://secure.fanboy.co.nz/fanboy-mobile-notifications.txt', backup: 'hosts-backup/ads/18.txt' }
     ],
-    target: path.join('hosts', 'ads.txt')
+    target: path.join('hosts', 'ads.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -41,7 +42,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/r-a-y/mobile-hosts/master/AdguardMobileSpyware.txt', backup: 'hosts-backup/ads2/11.txt' },
         { url: 'https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Samsung-AdBlock.txt', backup: 'hosts-backup/ads2/12.txt' }
     ],
-    target: path.join('hosts', 'ads-2.txt')
+    target: path.join('hosts', 'ads-2.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -59,7 +61,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Xiaomi-Extension.txt', backup: 'hosts-backup/ads3/12.txt' },
         //{ url: 'https://raw.githubusercontent.com/cbuijs/ut1/master/ads/domains.original', backup: 'hosts-backup/ads/1.txt' }
     ],
-    target: path.join('hosts', 'ads-3.txt')
+    target: path.join('hosts', 'ads-3.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -74,7 +77,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/polish-pihole-filters/KADhosts.txt', backup: 'hosts-backup/gen/9.txt' },
         //{ url: 'https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/cookies_filters/adblock_cookies.txt', backup: 'hosts-backup/gen/1.txt' }
     ],
-    target: path.join('hosts', 'gen.txt')
+    target: path.join('hosts', 'gen.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -87,7 +91,8 @@ const sourceFiles = [
         { url: 'https://urlhaus.abuse.ch/downloads/hostfile', backup: 'hosts-backup/gen2/7.txt' },
         { url: 'https://big.oisd.nl', backup: 'hosts-backup/gen2/8.txt' }
     ],
-    target: path.join('hosts', 'gen-2.txt')
+    target: path.join('hosts', 'gen-2.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -100,7 +105,8 @@ const sourceFiles = [
         { url: 'https://justdomains.github.io/blocklists/lists/adguarddns-justdomains.txt', backup: 'hosts-backup/gen3/7.txt' },
         { url: 'https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/ParsedBlacklists/EasyList-Liste-FR.txt', backup: 'hosts-backup/gen3/8.txt' }
     ],
-    target: path.join('hosts', 'gen-3.txt')
+    target: path.join('hosts', 'gen-3.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -113,7 +119,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/ParsedBlacklists/EasyList.txt', backup: 'hosts-backup/gen4/7.txt' },
         { url: 'https://raw.githubusercontent.com/hagezi/dns-blocklists/main/hosts/pro.txt', backup: 'hosts-backup/gen4/8.txt' }
     ],
-    target: path.join('hosts', 'gen-4.txt')
+    target: path.join('hosts', 'gen-4.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -125,7 +132,8 @@ const sourceFiles = [
         //{ url: 'https://raw.githubusercontent.com/badmojr/1Hosts/master/Xtra/domains.wildcards', backup: 'hosts-backup/ads/1.txt' },
         { url: 'https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt', backup: 'hosts-backup/gen5/6.txt' }
     ],
-    target: path.join('hosts', 'gen-5.txt')
+    target: path.join('hosts', 'gen-5.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -133,14 +141,16 @@ const sourceFiles = [
         { url: 'https://blocklistproject.github.io/Lists/drugs.txt', backup: 'hosts-backup/illegal/2.txt' },
         { url: 'https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt', backup: 'hosts-backup/illegal/3.txt' }
     ],
-    target: path.join('hosts', 'illegal.txt')
+    target: path.join('hosts', 'illegal.txt'),
+    useWhitelist: true
   },
   {
     urls: [
         { url: 'https://blocklistproject.github.io/Lists/porn.txt', backup: 'hosts-backup/porn/1.txt' },
         { url: 'https://raw.githubusercontent.com/chadmayfield/my-pihole-blocklists/master/lists/pi_blocklist_porn_all.list', backup: 'hosts-backup/porn/2.txt' }
     ],
-    target: path.join('hosts', 'porn.txt')
+    target: path.join('hosts', 'porn.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -149,7 +159,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/cbuijs/ut1/master/dating/domains.original', backup: 'hosts-backup/porn2/3.txt' },
         { url: 'https://raw.githubusercontent.com/cbuijs/ut1/master/sexual_education/domains.original', backup: 'hosts-backup/porn2/4.txt' }
     ],
-    target: path.join('hosts', 'porn-2.txt')
+    target: path.join('hosts', 'porn-2.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -157,7 +168,8 @@ const sourceFiles = [
         { url: 'https://www.github.developerdan.com/hosts/lists/dating-services-extended.txt', backup: 'hosts-backup/porn3/2.txt' },
         { url: 'https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/CountryCodesLists/France.txt', backup: 'hosts-backup/porn3/3.txt' }
     ],
-    target: path.join('hosts', 'porn-3.txt')
+    target: path.join('hosts', 'porn-3.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -165,7 +177,8 @@ const sourceFiles = [
         { url: 'https://raw.githubusercontent.com/alsyundawy/TrustPositif/main/gambling_indonesia.txt', backup: 'hosts-backup/gambling/2.txt' },
         { url: 'https://raw.githubusercontent.com/MajkiIT/polish-ads-filter/master/polish-pihole-filters/gambling-hosts.txt', backup: 'hosts-backup/gambling/3.txt' }
     ],
-    target: path.join('hosts', 'gambling.txt')
+    target: path.join('hosts', 'gambling.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -175,7 +188,8 @@ const sourceFiles = [
         { url: 'https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser', backup: 'hosts-backup/crypto/4.txt' },
         { url: 'https://blocklistproject.github.io/Lists/crypto.txt', backup: 'hosts-backup/crypto/5.txt' }
     ],
-    target: path.join('hosts', 'crypto.txt')
+    target: path.join('hosts', 'crypto.txt'),
+    useWhitelist: true
   },
   {
     urls: [
@@ -184,7 +198,8 @@ const sourceFiles = [
         { url: 'https://blocklist.sefinek.net/generated/v1/0.0.0.0/social/tiktok.txt', backup: 'hosts-backup/media/3.txt' },
         { url: 'https://blocklist.sefinek.net/generated/v1/0.0.0.0/sites/omegle.txt', backup: 'hosts-backup/media/4.txt' }
     ],
-    target: path.join('hosts', 'media.txt')
+    target: path.join('hosts', 'media.txt'),
+    useWhitelist: false
   },
   {
     urls: [
@@ -193,16 +208,19 @@ const sourceFiles = [
         { url: 'https://urlhaus.abuse.ch/downloads/hostfile', backup: 'hosts-backup/junk/3.txt' },
         { url: 'https://blocklistproject.github.io/Lists/fraud.txt', backup: 'hosts-backup/junk/4.txt' }
     ],
-    target: path.join('hosts', 'other-junk.txt')
+    target: path.join('hosts', 'other-junk.txt'),
+    useWhitelist: true
   },
   {
     urls: [
         { url: 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/myblocklist.txt', backup: 'hosts-backup/other.txt' }
     ],
-    target: path.join('hosts', 'other.txt')
+    target: path.join('hosts', 'other.txt'),
+    useWhitelist: true
   },
 ];
 //const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+
 const whitelistUrl = 'https://raw.githubusercontent.com/croxtyl/pi-hole-block-list/main/whitelist.txt';
 const userAgent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 async function getData(url) {
@@ -210,16 +228,19 @@ async function getData(url) {
     const response = await axios.get(url, {
       headers: { 'User-Agent': userAgent }
     });
-    if (response.status === 404 || response.status === 403 || response.status === 521) {
+
+    if (response.status >= 400 && response.status < 600) {
       console.error(`Error ${response.status} for ${url}`);
       return null;
     }
+
     return response.data;
   } catch (err) {
     console.error('Error fetching ' + url + ': ' + err.message);
     return null;
   }
 }
+
 
 function readLocalBackup(filePath, reason) {
   try {
@@ -285,14 +306,22 @@ async function updateFilesAndCommit() {
 
     lines.forEach(line => {
       let cleanedLine = cleanLine(line);
-      if (cleanedLine && !whitelist.has(cleanedLine.toLowerCase().replace(/\.$/, ''))) {
+
+      if (fileSet.useWhitelist) {
+        if (cleanedLine && !whitelist.has(cleanedLine.toLowerCase().replace(/\.$/, ''))) {
+          if (cleanedLine) {
+            filteredLines.push(cleanedLine);
+            totalConverted++;
+          }
+        } else if (cleanedLine) {
+          removedLines.add(cleanedLine);
+          totalRemoved++;
+        }
+      } else {
         if (cleanedLine) {
           filteredLines.push(cleanedLine);
           totalConverted++;
         }
-      } else if (cleanedLine) {
-        removedLines.add(cleanedLine);
-        totalRemoved++;
       }
     });
 
