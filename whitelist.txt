@@ -27,3 +27,7 @@ g2a.com
 cdn.bio.link
 email.notify.docker.com
 m.youtube.com
+duckduckgo.com
+google.com
+www.google.com
+telegram.org
